@@ -1,0 +1,23 @@
+{
+    "author" : "Stephen Meyer",
+    "description" : "A grid sequencer for branching Lindenmayer System strings.",
+    "homepatcher" : "For RLD.maxpat",
+    "max_version_min" : "8.1", "max_version_max" : "none",
+    "name" : "lsq.sequencer",
+    "os" : {
+        "macintosh" : {
+            "platform" : [ "ia32", "x64" ],
+            "min_version" : "none"
+        },
+        "windows" : {
+            "platform" : [ "ia32", "x64" ],
+            "min_version" : "none"
+        }
+    },
+    "package_extra" : {
+        "copyright" : "Copyright (c) 2021 Stephen Meyer"
+    },
+    "tags" : [ "L-system", "Lindemayer Systems", "Sequencer" ],
+    "version" : "0.1.0",
+    "website" : ""
+}
