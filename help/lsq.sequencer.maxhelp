@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 11,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 88.0, 888.0, 613.0 ],
+		"rect" : [ 67.0, 87.0, 888.0, 613.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -51,7 +51,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 11,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -118,7 +118,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 10.0, 94.5, 510.0, 194.0 ],
+									"patching_rect" : [ 10.0, 94.5, 511.0, 194.0 ],
 									"text" : "The sequencer loads with a default set of rules.\n\nNot all steps will have an event symbol. If the current generation string is not complex enough, some steps may be blank/empty.\n\nNot all steps will have a metadata symbol output.\n\nMetadata symbols are always paired with an event symbol. They will come out of the second outlet prior to the paired event symbol coming out of the first/leftmost outlet.\n\nVery complex strings may overflow the 8 by 8 grid and data will be dropped/ignored. At present, due to the complexity in developing event circuitry for translating a 1-dimensional string with branching represented by symbols into a 2-dimensional matrix, a row will not be reused even if the corresponding branch sequence has terminated."
 								}
 
@@ -150,7 +150,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 11,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -192,8 +192,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 10.0, 69.0, 510.0, 261.0 ],
-									"presentation_linecount" : 21,
+									"patching_rect" : [ 10.0, 69.0, 512.0, 261.0 ],
 									"text" : "Event Symbols: F X Y\n\nEvent symbols cause output. They are only symbols and their meaning and interpretation is left entirely to the Max programmer to define. A sequencer step will only have a single symbol.\n\nBranching Symbols: [ ]\n\nBranching symbols open and close branches, [ and ] respectively. A branch causes the next metadata/event pairing to happen at the next available row in a grid. Once a row is used by a branch it is not reused in the current generation. While a branch starts at the same index as the preceding event symbol, it may include multiple events that occupy successive grid cells in the row.\n\nMetadata Symbols: + -\n\nMetadata symbols will be interpreted as binary pairs. When one or more metadata symbols preceed an event symbol, they will be paired with that event symbol. All metadata symbols will be sent out the second outlet prior to the paired event symbol being sent out the left/first outlet. Therefore a sequencer step will have zero or more metadata symbols."
 								}
 
@@ -238,13 +237,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 11,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 888.0, 587.0 ],
+						"rect" : [ 67.0, 113.0, 888.0, 587.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -275,6 +274,31 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-16",
+									"linecount" : 13,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 416.0, 134.0, 443.0, 181.0 ],
+									"text" : "The primary object [lsq.sequencer] uses a Jitter matrix for storage with the following assumptions for data cells.\n\n-1 is the null/no-data value\n\nPlane 0 stores the primary event data. Plane 0 events symbols (F, X, Y) are translated to their unicode code points (integers).\n\nPlane 1 stores the metadata, which may be a sequence of zero or more + or - symbols. Zero metadata symbols will result in a -1 value for the plane cell. 1 or more + and - symbols are translated to binary as 1 and 0, respectively. The plane cell then stores the binary string in decimal representation. For example, a sequence of \"+ - +\" becomes binary 101 and then decimal 5."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontsize" : 16.0,
+									"id" : "obj-14",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 416.0, 109.0, 443.0, 24.0 ],
+									"text" : "Matrix Interpretation"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-4",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -292,7 +316,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 11.0, 52.0, 848.0, 60.0 ],
+									"patching_rect" : [ 11.0, 48.0, 848.0, 60.0 ],
 									"text" : "lsq.interpreter: an abtraction to manage rules and string rewriting.\n\nlsq.translator: an abstraction to parse an l-system string and translate it into lists that represent each cell can be used to populate a 2D, 2-plane Jitter matrix for storage. Plane 0 is used for event symbols and Plane 1 is used for metadata symbols (see below for metadata decimal representation).",
 									"textcolor" : [ 0.462745098039216, 0.462745098039216, 0.462745098039216, 1.0 ]
 								}
@@ -680,13 +704,13 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 8,
+							"revision" : 11,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 114.0, 888.0, 587.0 ],
+						"rect" : [ 0.0, 26.0, 888.0, 587.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -783,7 +807,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 651.333333333333371, 173.5, 203.0, 47.0 ],
+									"patching_rect" : [ 651.333333333333371, 173.5, 207.0, 47.0 ],
 									"text" : "Advance 1 generation by passing the currentstring  through the current rules. Updates current string."
 								}
 
