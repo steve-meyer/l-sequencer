@@ -243,7 +243,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 67.0, 113.0, 888.0, 587.0 ],
+						"rect" : [ 0.0, 26.0, 888.0, 587.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -279,7 +279,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 416.0, 134.0, 443.0, 181.0 ],
+									"patching_rect" : [ 416.0, 144.0, 443.0, 181.0 ],
 									"text" : "The primary object [lsq.sequencer] uses a Jitter matrix for storage with the following assumptions for data cells.\n\n-1 is the null/no-data value\n\nPlane 0 stores the primary event data. Plane 0 events symbols (F, X, Y) are translated to their unicode code points (integers).\n\nPlane 1 stores the metadata, which may be a sequence of zero or more + or - symbols. Zero metadata symbols will result in a -1 value for the plane cell. 1 or more + and - symbols are translated to binary as 1 and 0, respectively. The plane cell then stores the binary string in decimal representation. For example, a sequence of \"+ - +\" becomes binary 101 and then decimal 5."
 								}
 
@@ -292,7 +292,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 416.0, 109.0, 443.0, 24.0 ],
+									"patching_rect" : [ 416.0, 119.0, 443.0, 24.0 ],
 									"text" : "Matrix Interpretation"
 								}
 
@@ -354,7 +354,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 230.833333333333371, 430.0, 51.0, 22.0 ],
+									"patching_rect" : [ 230.833333333333371, 445.0, 51.0, 22.0 ],
 									"text" : "setall -1"
 								}
 
@@ -438,7 +438,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 352.333333333333371, 518.0, 429.0, 22.0 ],
+									"patching_rect" : [ 352.333333333333371, 533.0, 429.0, 22.0 ],
 									"text" : "+ + F Y X [ F + Y ] - F [ X ] [ - Y + F ]"
 								}
 
@@ -462,7 +462,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "bang", "", "bang" ],
-									"patching_rect" : [ 25.0, 339.0, 224.833333333333371, 22.0 ],
+									"patching_rect" : [ 25.0, 354.0, 224.833333333333371, 22.0 ],
 									"text" : "t b l b"
 								}
 
@@ -479,7 +479,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 4,
 									"outlettype" : [ "list", "", "", "" ],
-									"patching_rect" : [ 352.333333333333371, 339.0, 410.0, 169.0 ],
+									"patching_rect" : [ 352.333333333333371, 354.0, 410.0, 169.0 ],
 									"rows" : 8
 								}
 
@@ -491,7 +491,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "jit_matrix", "" ],
-									"patching_rect" : [ 61.0, 483.0, 109.0, 22.0 ],
+									"patching_rect" : [ 61.0, 498.0, 109.0, 22.0 ],
 									"text" : "jit.matrix 2 long 8 8"
 								}
 
@@ -503,7 +503,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 61.0, 430.0, 161.0, 22.0 ],
+									"patching_rect" : [ 61.0, 445.0, 161.0, 22.0 ],
 									"text" : "setcell $2 $3 plane $4 val $1"
 								}
 
@@ -515,7 +515,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 61.333333333333371, 385.0, 77.0, 22.0 ],
+									"patching_rect" : [ 61.333333333333371, 400.0, 77.0, 22.0 ],
 									"text" : "lsq.translator"
 								}
 
@@ -558,7 +558,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-56", 0 ],
-									"midpoints" : [ 240.333333333333371, 471.5, 70.5, 471.5 ],
+									"midpoints" : [ 240.333333333333371, 486.5, 70.5, 486.5 ],
 									"source" : [ "obj-13", 0 ]
 								}
 
@@ -618,7 +618,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-62", 0 ],
-									"midpoints" : [ 70.5, 517.0, 338.666666666666629, 517.0, 338.666666666666629, 330.0, 361.833333333333371, 330.0 ],
+									"midpoints" : [ 70.5, 532.0, 338.666666666666629, 532.0, 338.666666666666629, 345.0, 361.833333333333371, 345.0 ],
 									"source" : [ "obj-56", 0 ]
 								}
 
@@ -634,7 +634,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-8", 1 ],
-									"midpoints" : [ 34.5, 322.5, 771.833333333333371, 322.5 ],
+									"midpoints" : [ 34.5, 339.5, 771.833333333333371, 339.5 ],
 									"order" : 0,
 									"source" : [ "obj-6", 0 ]
 								}
@@ -665,7 +665,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-56", 0 ],
-									"midpoints" : [ 34.5, 471.5, 70.5, 471.5 ],
+									"midpoints" : [ 34.5, 486.5, 70.5, 486.5 ],
 									"source" : [ "obj-76", 0 ]
 								}
 
@@ -710,7 +710,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 888.0, 587.0 ],
+						"rect" : [ 67.0, 113.0, 888.0, 587.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
