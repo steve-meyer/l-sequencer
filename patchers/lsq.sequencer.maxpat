@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 11,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 338.0, 79.0, 1178.0, 989.0 ],
+		"rect" : [ 34.0, 87.0, 1204.0, 711.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -272,7 +272,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 548.64285714285711, 816.0, 30.0, 30.0 ]
+					"patching_rect" : [ 539.571428571428555, 812.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -569,8 +569,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 154.0, 412.0, 169.0, 22.0 ],
-					"text" : "jit.matrix sequencer 2 long 8 8"
+					"patching_rect" : [ 154.0, 412.0, 189.0, 22.0 ],
+					"text" : "jit.matrix #0_sequencer 2 long 8 8"
 				}
 
 			}
