@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 55.0, 79.0, 871.0, 746.0 ],
+		"rect" : [ 55.0, 87.0, 871.0, 746.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 517.0, 475.0, 327.0, 60.0 ],
-					"presentation_linecount" : 4,
 					"text" : "Event Processing\n\nSimple mapping of the event symbols F, X, Y to MIDI note numbers 57, 60, 59."
 				}
 
@@ -59,7 +58,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 517.0, 315.0, 327.0, 127.0 ],
-					"presentation_linecount" : 9,
 					"text" : "Metadata Processing\n\n- symbol: transposition down 7 steps.\n+ symbol: transposition up 7 steps and a 50% chance of triggering a new metronome pulse.\n\nA single step may result in multiple successive transpositions. Modulo division by 12 to keep the final transposition amount within a plus/minus one octave."
 				}
 
