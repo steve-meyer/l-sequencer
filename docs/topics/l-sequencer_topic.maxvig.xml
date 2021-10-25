@@ -19,12 +19,15 @@
     There are three objects in the l-sequencer package:
   </p>
   <ul>
-    <li><openfilelink filename="lsq.sequencer.maxhelp">lsq.sequencer</openfilelink> - A Max abstraction that acts as a sequencer for branching L-system strings.</li>
+    <li><openfilelink filename="lsq.sequencer.maxhelp">lsq.sequencer</openfilelink> - an abstraction that acts as a sequencer for branching L-system strings.</li>
     <li>lsq.interpreter: an abtraction to manage rules and string rewriting.</li>
-    <li>lsq.translator: an abstraction to parse an l-system string and translate it into lists that represent each cell can be used to populate a 2D, 2-plane Jitter matrix for storage. Plane 0 is used for event symbols and Plane 1 is used for metadata symbols.</li>
+    <li>lsq.translator: an abstraction to parse an l-system string and translate it into lists that represent the cells of a 2-dimensional, 2-plane Jitter matrix. Plane 0 is used for event symbols and Plane 1 is used for metadata symbols.</li>
   </ul>
   <p>
-    See the <b>Core Components</b> tab on the <openfilelink filename="lsq.sequencer.maxhelp">lsq.sequencer</openfilelink> for an example patcher using [lsq.interpretor] and [lsq.translator].
+    See the <b>Core Components</b> tab on the <openfilelink filename="lsq.sequencer.maxhelp">lsq.sequencer</openfilelink> for an example patcher using [lsq.interpretor] and [lsq.translator]. Alternatively, open up the [lsq.sequencer] object itself to see how it uses its embedded interpretor and translator objects.
+  </p>
+  <p>
+    The l-sequencer package is built entirely from core Max objects. It contains no externals and has no dependencies on other Max packages or JavaScript Node packages. Please let this encourage you to look under the hood, as it were, and treat these abstractions as a reference implementation for further improvement and or hacking. There must be something one could do with matrix transformations on the underlying parsed and stored Jitter matrix...
   </p>
 
 
@@ -103,7 +106,7 @@
 
   <h2>Acknowledgments &amp; Inspiration</h2>
   <p>
-    This set of Max abstractions are inspired by <a href="https://www.lukedubois.com/projects-1/diss">R. Luke Dubois' dissertation</a>. While there are Max packages like cage that will implement L-system string rewriting algorithms, l-sequencer is focused on interpreting a branching L-system string into a data structure that represents simultaneous, or co-occurring, events. Dubois provides an interpretation of L-system branching that translates a melodic event sequence into harmony or polyphony.
+    This set of Max abstractions are inspired by <a href="https://www.lukedubois.com/projects-1/diss">R. Luke DuBois' dissertation</a>. While there are Max packages like cage that will implement L-system string rewriting algorithms, l-sequencer is focused on interpreting a branching L-system string into a data structure that represents simultaneous, or co-occurring, events. DuBois provides an interpretation of L-system branching that translates a melodic event sequence into harmony or polyphony.
   </p>
 
 

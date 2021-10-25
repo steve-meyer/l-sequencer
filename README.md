@@ -26,4 +26,4 @@ There are three types of symbols available.
 
 ## Acknowledgments & Inspiration
 
-This set of Max abstractions are inspired by [R. Luke Dubois' dissertation](https://www.lukedubois.com/projects-1/diss). While there are Max packages like cage that will implement L-system string rewriting algorithms, `l-sequencer` is focused on interpreting a branching L-system string into a data structure that represents simultaneous, or co-occurring, events. Dubois provides an interpretation of L-system branching that translates a melodic event sequence into harmony or polyphony.
+This set of Max abstractions are inspired by [R. Luke DuBois' dissertation](https://www.lukedubois.com/projects-1/diss). While there are Max packages like cage that will implement L-system string rewriting algorithms, `l-sequencer` is focused on interpreting a branching L-system string into a data structure that represents simultaneous, or co-occurring, events. DuBois provides an interpretation of L-system branching that translates a melodic event sequence into harmony or polyphony.
