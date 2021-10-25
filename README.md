@@ -1,6 +1,10 @@
 # l-sequencer
 
-A grid sequencer for branching Lindenmayer System strings.
+A Max grid sequencer for branching Lindenmayer System strings.
+
+## Installation
+
+Download or clone this repository and save it in your Max `Packages` directory/folder as `l-sequencer`. An **l-sequencer** entry will then show up in the Max Package Manager under **Installed Packages**.
 
 ## Overview
 
