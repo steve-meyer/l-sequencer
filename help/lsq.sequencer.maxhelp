@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 888.0, 587.0 ],
+						"rect" : [ 67.0, 113.0, 888.0, 587.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -119,7 +119,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 10.0, 94.5, 511.0, 194.0 ],
-									"text" : "The sequencer loads with a default set of rules.\n\nNot all steps will have an event symbol. If the current generation string is not complex enough, some steps may be blank/empty.\n\nNot all steps will have a metadata symbol output.\n\nMetadata symbols are always paired with an event symbol. They will come out of the second outlet prior to the paired event symbol coming out of the first/leftmost outlet.\n\nVery complex strings may overflow the 8 by 8 grid and data will be dropped/ignored. At present, due to the complexity in developing event circuitry for translating a 1-dimensional string with branching represented by symbols into a 2-dimensional matrix, a row will not be reused even if the corresponding branch sequence has terminated."
+									"text" : "The sequencer loads with a default set of rules.\n\nNot all steps will have an event symbol. If the current generation string is not complex enough, some steps may be blank/empty.\n\nNot all steps will have a metadata symbol output.\n\nMetadata symbols are always paired with an event symbol. They will come out of the second outlet prior to the paired event symbol coming out of the first/leftmost outlet.\n\nVery complex strings may overflow the current grid size and data will be dropped/ignored. At present, due to the complexity in developing event circuitry for translating a 1-dimensional string with branching represented by symbols into a 2-dimensional matrix, a row will not be reused even if the corresponding branch sequence has terminated."
 								}
 
 							}
@@ -192,7 +192,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 10.0, 69.0, 514.0, 261.0 ],
+									"patching_rect" : [ 10.0, 69.0, 517.0, 261.0 ],
 									"text" : "Event Symbols: any non-branching and non-metadata single char\n\nEvent symbols cause output. They are only symbols and their meaning and interpretation is left entirely to the Max programmer to define. A sequencer step will only have a single symbol.\n\nBranching Symbols: [ ]\n\nBranching symbols open and close branches, [ and ] respectively. A branch causes the next metadata/event pairing to happen at the next available row in a grid. Once a row is used by a branch it is not reused in the current generation. While a branch starts at the same index as the preceding event symbol, it may include multiple events that occupy successive grid cells in the row.\n\nMetadata Symbols: + -\n\nMetadata symbols will be interpreted as binary pairs. When one or more metadata symbols preceed an event symbol, they will be paired with that event symbol. All metadata symbols will be sent out the second outlet prior to the paired event symbol being sent out the left/first outlet. Therefore a sequencer step will have zero or more metadata symbols."
 								}
 
@@ -710,7 +710,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 67.0, 113.0, 888.0, 587.0 ],
+						"rect" : [ 0.0, 26.0, 888.0, 587.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -760,7 +760,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 11.0, 52.0, 509.0, 47.0 ],
-									"text" : "A Lindenmayer System (L-System) based 8 by 8 grid sequencer. Grid columns are sequencer steps. Grid rows are simultaneous events represented by pairings of event symbols and metadata symbols.",
+									"text" : "A Lindenmayer System (L-System) based grid sequencer. Grid columns are sequencer steps. Grid rows are simultaneous events represented by pairings of event symbols and metadata symbols.",
 									"textcolor" : [ 0.462745098039216, 0.462745098039216, 0.462745098039216, 1.0 ]
 								}
 
@@ -1226,13 +1226,6 @@
 				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "lsq.step.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/patchers",
-				"patcherrelativepath" : "../patchers",
-				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{

@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+
+
+<c74object name='lsq.sequencer'>
+
+	<digest>A grid sequencer for branching Lindenmayer System strings.</digest>
+	<description>
+		A Lindenmayer System (L-System) based grid sequencer. Grid columns are sequencer steps. Grid rows are simultaneous events represented by pairings of event symbols and metadata symbols.
+	</description>
+
+
+	<metadatalist>
+		<metadata name='author'>Stephen Meyer</metadata>
+		<metadata name='tag'>Lindenmayer Systems</metadata>
+		<metadata name='tag'>L-systems</metadata>
+		<metadata name='tag'>Sequencer</metadata>
+	</metadatalist>
+
+
+	<methodlist>
+
+		<method name='int'>
+			<digest>Sequencer step index</digest>
+			<description>Sequencer step index</description>
+		</method>
+
+		<method name="l-string">
+			<arglist>
+				<arg name="initial-string" optional="0" type="list"/>
+			</arglist>
+			<digest>The L-system string that will seed the next generations, or axiom.</digest>
+			<description>
+				An L-system string should be a list of single characters that will start a series of L-system evolutions. This axiom string will immediately be passed through the L-system rule set and advance to first iteration.
+			</description>
+		</method>
+
+		<method name="currentstring">
+			<digest>Send the current iteration of the stored L-system string out the right outlet.</digest>
+			<description>Send the current iteration of the stored L-system string out the right outlet.</description>
+		</method>
+
+		<method name="advance">
+			<digest>Advance the current l-string by one generation.</digest>
+			<description>Send the currently stored l-string through the current rule set. This will update the sequencer steps.</description>
+		</method>
+
+		<method name="rules">
+			<digest>Send the current rule set out the right outlet.</digest>
+			<description>Send the current rule set out the right outlet. Each rule will be sent as a separate list.</description>
+		</method>
+
+		<method name="rule">
+			<arglist>
+				<arg name="rule-definition" optional="0" type="list"/>
+			</arglist>
+			<digest>Add or update an existing L-system production rule by matching a predecessor symbol.</digest>
+			<description>
+				A rule must include at least two characters and should be passed in as a list. The first character will be treated as the rule's matching predecessor symbol. The rest of the characters in the list will be the rule's successor string.
+
+				If the the message "rule F + + F [ X ]" is received, "F" will be the matching predecessor string and the remaining parts of the list "+ + F [ X ]" will be the F symbol's new successor string when a new l-string is received or when processing "advance" messages for the current l-string.
+
+				The l-sequencer objects only process context free rules.
+			</description>
+		</method>
+
+		<method name="deleterule">
+			<arglist>
+				<arg name="predecessor-symbol" optional="0" type="symbol"/>
+			</arglist>
+			<digest>Delete an existing L-system production rule by matching a predecessor symbol.</digest>
+			<description>Delete an existing L-system production rule by matching a predecessor symbol.</description>
+		</method>
+
+	</methodlist>
+
+
+	<attributelist>
+
+		<attribute name='steps' get='0' set='1' type='long' size='1' >
+			<digest>Number of sequencer steps.</digest>
+			<description>Number of sequencer steps. The default will be set to 8.</description>
+		</attribute>
+
+		<attribute name='maxbranches' get='0' set='1' type='long' size='1' >
+			<digest>Maximum number of branches.</digest>
+			<description>Max branches will determine the maximum number of rows to use in the matrix-based sequencer. When a given l-string has branching that is complex enough to exceed the number of rows available, branches will be dropped/ignored. The default will be set to 8.</description>
+		</attribute>
+
+	</attributelist>
+
+
+	<seealsolist>
+		<seealso name='lsq.interpreter'/>
+		<seealso name='lsq.translator'/>
+	</seealsolist>
+
+
+</c74object>

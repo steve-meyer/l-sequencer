@@ -81,7 +81,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 10.0, 9.0, 516.0, 33.0 ],
+					"patching_rect" : [ 9.0, 9.0, 516.0, 33.0 ],
 					"text" : "Example: Processing lsq.sequencer Output"
 				}
 
@@ -900,13 +900,6 @@
 				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "lsq.step.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/patchers",
-				"patcherrelativepath" : "../patchers",
-				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
