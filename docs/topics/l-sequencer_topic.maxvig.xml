@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml-stylesheet href="_c74_vig.xsl" type="text/xsl"?>
+<vignette name="l-sequencer Package Overview" package="l-sequencer">
+  <metadatalist>
+    <metadata name="author">Stephen Meyer</metadata>
+    <metadata name="tag">l-sequencer</metadata>
+    <metadata name="tag">lsq</metadata>
+  </metadatalist>
+
+
+  <h1>l-sequencer Package Overview</h1>
+  <p>
+    A Lindenmayer System (L-System) based grid sequencer. Grid columns are sequencer steps. Grid rows are simultaneous events represented by pairings of event symbols and metadata symbols.
+	</p>
+
+
+  <h2>l-sequencer Objects</h2>
+  <p>
+    There are three objects in the l-sequencer package:
+  </p>
+  <ul>
+    <li><openfilelink filename="lsq.sequencer.maxhelp">lsq.sequencer</openfilelink> - A Max abstraction that acts as a sequencer for branching L-system strings.</li>
+    <li>lsq.interpreter: an abtraction to manage rules and string rewriting.</li>
+    <li>lsq.translator: an abstraction to parse an l-system string and translate it into lists that represent each cell can be used to populate a 2D, 2-plane Jitter matrix for storage. Plane 0 is used for event symbols and Plane 1 is used for metadata symbols.</li>
+  </ul>
+  <p>
+    See the <b>Core Components</b> tab on the <openfilelink filename="lsq.sequencer.maxhelp">lsq.sequencer</openfilelink> for an example patcher using [lsq.interpretor] and [lsq.translator].
+  </p>
+
+
+  <h2>About</h2>
+  <p>
+    The primary l-sequencer object [lsq.sequencer] is a Max abstraction that takes L-system strings as input and processes them first through an L-system rule set to generate a new string and then translates the new string into one or more sequencer steps to be played back. The core data model of this sequencer can be understood as a 2-dimensional matrix. The columns of the matrix represent the sequencer steps and the rows represent simultaneous events for a given step.
+  </p>
+  <p>
+    For example, consider a matrix in which step N is a column that contains event symbols F, X and Y in rows 1, 2 and 3 respectively. Those events could be translated into note pitches (e.g., MIDI note numbers) by a processing algorithm/interpreter that receives the sequencer's output. Because all three notes are received simultaneously as part of the same sequencer step, in this instance step N would represent a chord or polyphony.
+  </p>
+  <p>
+    The interpretation of sequencer output is left to the process consuming its step data. Whether the symbols produced by the sequencer are interpreted as traditional sequencer data (note/pitch) or whether they represent other musical parameters (e.g., timbre as MIDI program) or the initiation of a more complex event/process, each symbol is only intended to stand in for an event in the most general sense. The composer is therefore encouraged to consider this sequencer as a representation of macro, rather than micro/atomic, compositional elements.
+  </p>
+
+
+  <h2>Available Symbols</h2>
+  <ul>
+    <li>
+      <b>Event Symbols:</b> Any single character that is not a branching or metadata symbol. These are understood as sequencer events.
+      <br/>
+      Event symbols cause output. They are only symbols and their meaning and interpretation is left entirely to the Max programmer to define. A sequencer step will only have a single symbol per branch.
+    </li>
+    <li>
+      <b>Branching Symbols:</b> [ ]
+      <br/>
+      Branching symbols open and close branches, [ and ] respectively. A branch causes the next metadata/event pairing to happen at the next available row in a grid. Once a row is used by a branch it is not reused in the current generation. While a branch starts at the same index as the preceding event symbol, it may include multiple events that occupy successive grid cells in the row.
+      <ul>
+        <li>
+          <b>Start branch:</b>
+          [ indicates the next stream of event symbols will begin a sequence that starts simultaneous to the immediately preceding event symbol (branch parent) until the branch terminates</li>
+        <li>
+          <b>Terminate branch:</b>
+          ] indicates a branch is complete and will return the step position to the succeeding step after the branch parent</li>
+      </ul>
+    </li>
+    <li>
+      <b>Metadata Symbols:</b> + -
+      <br/>
+      Metadata symbols will be interpreted as binary pairs. When one or more metadata symbols preceed an event symbol, they will be paired with that event symbol. All metadata symbols for a step will be sent out the second outlet prior to the paired event symbol being sent out the left/first outlet. A sequencer step will have zero or more metadata symbols. Metadata symbols are optional and do not need to be included with each event. These are understood as parametric changes that should be applied prior to a paired event.
+    </li>
+  </ul>
+
+
+  <h2>Matrix Interpretation</h2>
+  <p>
+    The primary object [lsq.sequencer] uses a Jitter matrix for storage. The [lsq.translator] object is responsible for translating an L-system string into [jit.matrix] cell data with the following assumptions.
+  </p>
+  <p>
+    -1 is the null/no-data value.
+  </p>
+  <p>
+    Plane 0 stores the primary event data. Plane 0 events symbols are translated to their unicode code points (integers).
+  </p>
+  <p>
+    Plane 1 stores the metadata, which may be a sequence of zero or more + or - symbols. Zero metadata symbols will result in a -1 value for the plane cell. 1 or more + and - symbols are translated to binary as 1 and 0, respectively. The plane cell then stores the binary string in decimal representation. For example, a sequence of "+ - +" becomes binary 101 and then decimal 5.
+  </p>
+
+
+  <h2>Notes, Caveats, Constraints...</h2>
+  <p>
+    The sequencer loads with a default set of rules.
+  </p>
+  <p>
+    Not all steps will have an event symbol. If the current generation string is not complex enough, some steps may be blank/empty.
+  </p>
+  <p>
+    Not all steps that have an event symbol will have metadata symbol output.
+  </p>
+  <p>
+    Metadata symbols are always paired with an event symbol. They will come out of the second outlet prior to the paired event symbol coming out of the first/leftmost outlet.
+  </p>
+  <p>
+    Very complex strings may overflow the current grid size and data will be dropped/ignored. At present, due to the complexity in developing event circuitry for translating a 1-dimensional string with branching represented by symbols into a 2-dimensional matrix, a row will not be reused even if the corresponding branch sequence has terminated.
+  </p>
+
+
+  <h2>Acknowledgments &amp; Inspiration</h2>
+  <p>
+    This set of Max abstractions are inspired by <a href="https://www.lukedubois.com/projects-1/diss">R. Luke Dubois' dissertation</a>. While there are Max packages like cage that will implement L-system string rewriting algorithms, l-sequencer is focused on interpreting a branching L-system string into a data structure that represents simultaneous, or co-occurring, events. Dubois provides an interpretation of L-system branching that translates a melodic event sequence into harmony or polyphony.
+  </p>
+
+
+  <seealsolist>
+		<!-- <seealso name="timing_events_topic" module="topics" type="vignette" />	-->
+		<seealso name="jit.linden" />
+  </seealsolist>
+
+</vignette>
