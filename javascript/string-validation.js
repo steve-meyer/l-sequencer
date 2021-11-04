@@ -11,6 +11,7 @@ function validate()
 }
 
 
+validateLength.local = 1;
 function validateLength(list)
 {
     if (list.length < 1)
@@ -23,6 +24,7 @@ function validateLength(list)
 }
 
 
+validateBranchChars.local = 1;
 function validateBranchChars(list)
 {
     if (list[0] == "[" || list[0] == "]")
@@ -51,6 +53,7 @@ function validateBranchChars(list)
 }
 
 
+closesUnopenedBranch.local = 1;
 function closesUnopenedBranch(list)
 {
     var openBranches = 0;
@@ -64,6 +67,7 @@ function closesUnopenedBranch(list)
 }
 
 
+hasAdjacentBranchingChars.local = 1;
 function hasAdjacentBranchingChars(list)
 {
     var lastChar = null;
@@ -76,6 +80,7 @@ function hasAdjacentBranchingChars(list)
 }
 
 
+validateMetadataSymbols.local = 1;
 function validateMetadataSymbols(list)
 {
     var lastCharIsMetadata = false;
