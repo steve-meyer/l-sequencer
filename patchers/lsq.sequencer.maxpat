@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 11,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -40,12 +40,24 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1034.0, 105.5, 81.0, 22.0 ],
+					"text" : "prepend strict"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-65",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 229.666666666666742, 704.0, 29.5, 22.0 ],
+					"patching_rect" : [ 229.666666666666742, 697.0, 29.5, 22.0 ],
 					"text" : "+"
 				}
 
@@ -57,7 +69,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 189.833333333333371, 704.0, 29.5, 22.0 ],
+					"patching_rect" : [ 189.833333333333371, 697.0, 29.5, 22.0 ],
 					"text" : "-"
 				}
 
@@ -93,7 +105,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 119.0, 704.0, 40.0, 22.0 ],
+					"patching_rect" : [ 119.0, 697.0, 40.0, 22.0 ],
 					"text" : "itoa"
 				}
 
@@ -201,7 +213,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 910.0, 142.5, 61.0, 22.0 ],
+					"patching_rect" : [ 910.0, 152.5, 61.0, 22.0 ],
 					"text" : "dim $1 $2"
 				}
 
@@ -222,11 +234,11 @@
 				"box" : 				{
 					"id" : "obj-5",
 					"maxclass" : "newobj",
-					"numinlets" : 3,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 910.0, 62.5, 143.0, 22.0 ],
-					"text" : "route steps maxbranches"
+					"numinlets" : 4,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
+					"patching_rect" : [ 910.0, 62.5, 205.0, 22.0 ],
+					"text" : "route steps maxbranches strict"
 				}
 
 			}
@@ -237,8 +249,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 705.0, 11.0, 224.0, 22.0 ],
-					"text" : "patcherargs @steps 8 @maxbranches 8"
+					"patching_rect" : [ 655.0, 11.0, 274.0, 22.0 ],
+					"text" : "patcherargs @steps 8 @maxbranches 8 @strict 0"
 				}
 
 			}
@@ -271,7 +283,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 346.0, 674.0, 175.0, 22.0 ],
+					"patching_rect" : [ 346.0, 697.0, 175.0, 22.0 ],
 					"text" : "r #0_rules_and_currentstring"
 				}
 
@@ -716,6 +728,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"source" : [ "obj-5", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-55", 0 ],
 					"source" : [ "obj-54", 0 ]
 				}
@@ -808,6 +827,14 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"midpoints" : [ 1043.5, 141.0, 19.5, 141.0 ],
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "lsq.translator.maxpat",
@@ -834,6 +861,13 @@
 				"name" : "rules.coll",
 				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/patchers",
 				"patcherrelativepath" : ".",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "string-validation.js",
+				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/javascript",
+				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
