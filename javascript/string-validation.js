@@ -29,23 +29,23 @@ function validateBranchChars(list)
 {
     if (list[0] == "[" || list[0] == "]")
     {
-        error("Production rule '" + list.join(" ") + "' starts with a branching symbol\n");
+        error("Production rule '" + formatListForError(list) + "' starts with a branching symbol\n");
         return false
     }
     else if (list.filter(function(char) { return char == "["; }).length !=
              list.filter(function(char) { return char == "]"; }).length)
     {
-        error("Production rule '" + list.join(" ") + "' contains unterminated branches\n");
+        error("Production rule '" + formatListForError(list) + "' contains unterminated branches\n");
         return false;
     }
     else if (hasAdjacentBranchingChars(list))
     {
-        error("Production rule '" + list.join(" ") + "' has adjacent branch opening symbols: '[['\n");
+        error("Production rule '" + formatListForError(list) + "' has adjacent branch opening symbols: '[['\n");
         return false;
     }
     else if (closesUnopenedBranch(list))
     {
-        error("Production rule '" + list.join(" ") + "' closes a branch that was never opened\n");
+        error("Production rule '" + formatListForError(list) + "' closes a branch that was never opened\n");
         return false;
     }
 
@@ -93,9 +93,15 @@ function validateMetadataSymbols(list)
 
     if (lastCharIsMetadata)
     {
-        error("Production rule '" + list.join(" ") + "' contains metadata symbols with no pairing event symbol\n");
+        error("Production rule '" + formatListForError(list) + "' contains metadata symbols with no pairing event symbol\n");
         return false;
     }
 
     return true;
+}
+
+
+formatListForError.local = 1;
+function formatListForError(list) {
+    return (list.length > 64) ? list.slice(0, 64).join(" ") + "..." : list.join(" ");
 }
