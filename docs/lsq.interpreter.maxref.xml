@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<c74object name="lsq.sequencer">
+<c74object name="lsq.interpreter">
 
-	<digest>A grid sequencer for branching Lindenmayer System strings.</digest>
+	<digest>A Lindenmayer System string processor.</digest>
 	<description>
-		A Lindenmayer System (L-System) based grid sequencer. Grid columns are sequencer steps. Grid rows are simultaneous events represented by pairings of event symbols and metadata symbols.
+		A Lindenmayer System (L-System) string processor. Encapsulates an L-System rule set and processes L-System strings according to the rules whether an original axiom or successive iterations of the current string.
 	</description>
 
 	<metadatalist>
 		<metadata name="author">Stephen Meyer</metadata>
 		<metadata name="tag">Lindenmayer Systems</metadata>
 		<metadata name="tag">L-systems</metadata>
-		<metadata name="tag">Sequencer</metadata>
 	</metadatalist>
 
 	<methodlist>
@@ -30,19 +29,21 @@
 			</description>
 		</method>
 
-		<method name="currentstring">
+		<method name="get">
 			<digest>Send the current iteration of the stored L-system string out the right outlet.</digest>
-			<description>Send the current iteration of the stored L-system string out the right outlet.</description>
+			<description>Send the current iteration of the stored L-system string out the left outlet.</description>
 		</method>
 
 		<method name="advance">
 			<digest>Advance the current l-string by one generation.</digest>
-			<description>Send the currently stored l-string through the current rule set. This will update the sequencer steps.</description>
+			<description>Send the currently stored l-string through the current rule set.</description>
 		</method>
 
 		<method name="rules">
 			<digest>Send the current rule set out the right outlet.</digest>
-			<description>Send the current rule set out the right outlet. Each rule will be sent as a separate list.</description>
+			<description>
+				Send the current rule set out the right outlet. Each rule will be sent as a separate list. After the last rule is sent output, the message "done" will be sent out the right outlet.
+			</description>
 		</method>
 
 		<method name="rule">
@@ -67,37 +68,23 @@
 			<description>Delete an existing L-system production rule by matching a predecessor symbol.</description>
 		</method>
 
+		<method name="strict">
+			<arglist>
+				<arg name="on/off" optional="0" type="long"/>
+			</arglist>
+			<digest>Set the interpreter to strict mode.</digest>
+			<description>
+				Set the interpreter to strict mode. A value of zero disables strict mode, non-zero enables it. Strict mode is diabled by default.
+
+				In strict mode the following l-strings rules are enforced and invalid l-strings will not be passed to the string processor: a 0-length string; all open branches (indicated by '[') in a string must be closed with ']'; a string may not start with a branch; a string may not contain adjacent open branching symbols (i.e., '[ [ ...'); a string may not contain a closing branch symbol ']' for an unopened branch; all metadata symbol sequences (one or more successive '+' and '-' chars) must be followed by an event symbol.
+			</description>
+		</method>
+
 	</methodlist>
 
-
-	<attributelist>
-
-		<attribute name="steps" get="0" set="1" type="long" size="1" >
-			<digest>Number of sequencer steps.</digest>
-			<description>Number of sequencer steps. The default will be set to 8.</description>
-		</attribute>
-
-		<attribute name="maxbranches" get="0" set="1" type="long" size="1" >
-			<digest>Maximum number of branches.</digest>
-			<description>
-				Max branches will determine the maximum number of rows to use in the matrix-based sequencer. When a given l-string has branching that is complex enough to exceed the number of rows available, branches will be dropped/ignored. The default will be set to 8.
-			</description>
-		</attribute>
-
-		<attribute name="strict" get="0" set="1" type="long" size="1" >
-			<digest>Use strict interpretation for l-strings.</digest>
-			<description>
-				In strict mode the embedded [lsq.interpreter] will validate l-strings according to a few rules designed to keep them well formed. See the [lsq.interpreter] info page entry for the "strict" message.
-			</description>
-		</attribute>
-
-	</attributelist>
-
-
 	<seealsolist>
-		<seealso name="lsq.interpreter"/>
+		<seealso name="lsq.sequencer"/>
 		<seealso name="lsq.translator"/>
 	</seealsolist>
-
 
 </c74object>
