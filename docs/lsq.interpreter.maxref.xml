@@ -14,11 +14,6 @@
 
 	<methodlist>
 
-		<method name="int">
-			<digest>Sequencer step index</digest>
-			<description>Sequencer step index</description>
-		</method>
-
 		<method name="l-string">
 			<arglist>
 				<arg name="initial-string" optional="0" type="list"/>
