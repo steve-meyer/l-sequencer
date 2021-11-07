@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<c74object name="lsq.translator">
+
+	<digest>A Lindenmayer System string processor that translates 1-dimensional strings to Jitter matrix cell contents.</digest>
+	<description>
+		Translate Lindenmayer System (L-System) strings into 2-dimentional, 2-plane [jit.matrix] data. The translator interprets the l-sequencer branching symbols so they will be create new rows.
+	</description>
+
+	<metadatalist>
+		<metadata name="author">Stephen Meyer</metadata>
+		<metadata name="tag">Lindenmayer Systems</metadata>
+		<metadata name="tag">L-systems</metadata>
+	</metadatalist>
+
+	<methodlist>
+
+		<method name="l-string">
+			<arglist>
+				<arg name="string" optional="0" type="list"/>
+			</arglist>
+			<digest>The L-system string that will be translated into Jitter matrix cell entries.</digest>
+			<description>
+				The L-system string that will be translated into Jitter matrix cell entries. Cell output will be successive 4 item lists of integers: {cell-value} {cell-column} {cell-row} {plane}. See the [lsq.translator] Max help file for the integer semantics.
+			</description>
+		</method>
+
+	</methodlist>
+
+	<seealsolist>
+		<seealso name="lsq.sequencer"/>
+		<seealso name="lsq.interpreter"/>
+	</seealsolist>
+
+</c74object>
