@@ -316,8 +316,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 25.0, 211.0, 78.0, 22.0 ],
-									"text" : "l-string F X Y"
+									"patching_rect" : [ 25.0, 211.0, 74.0, 22.0 ],
+									"text" : "axiom F X Y"
 								}
 
 							}
@@ -790,8 +790,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 149.0, 174.0, 101.0, 22.0 ],
-									"text" : "l-string F X Y"
+									"patching_rect" : [ 149.0, 174.0, 74.0, 22.0 ],
+									"text" : "axiom F X Y"
 								}
 
 							}
@@ -1014,6 +1014,13 @@
 				"name" : "rules.coll",
 				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/patchers",
 				"patcherrelativepath" : "../patchers",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "string-validation.js",
+				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/javascript",
+				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}

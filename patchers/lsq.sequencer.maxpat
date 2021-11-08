@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 8,
+			"revision" : 11,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -153,7 +153,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 515.499999999999432, 324.0, 29.5, 22.0 ],
+					"patching_rect" : [ 590.625, 334.0, 29.5, 22.0 ],
 					"text" : "- 1"
 				}
 
@@ -165,7 +165,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "int" ],
-					"patching_rect" : [ 477.999999999999432, 287.0, 56.5, 22.0 ],
+					"patching_rect" : [ 553.125, 287.0, 56.5, 22.0 ],
 					"text" : "t b i"
 				}
 
@@ -177,7 +177,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 515.499999999999432, 385.0, 64.0, 22.0 ],
+					"patching_rect" : [ 590.625, 385.0, 64.0, 22.0 ],
 					"text" : "offset $1 0"
 				}
 
@@ -260,7 +260,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 594.999999999999318, 287.0, 177.0, 22.0 ],
+					"patching_rect" : [ 661.75, 287.0, 177.0, 22.0 ],
 					"text" : "s #0_rules_and_currentstring"
 				}
 
@@ -292,7 +292,7 @@
 				"box" : 				{
 					"comment" : "Current string or rules",
 					"id" : "obj-58",
-					"index" : 0,
+					"index" : 3,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -307,7 +307,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 594.999999999999318, 248.0, 38.0, 22.0 ],
+					"patching_rect" : [ 661.75, 248.0, 38.0, 22.0 ],
 					"text" : "zl.reg"
 				}
 
@@ -316,11 +316,11 @@
 				"box" : 				{
 					"comment" : "l-string (list); (int) 1-8 step index; advance; rule (list); deleterule (symbol); currentstring; rules",
 					"id" : "obj-45",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "int" ],
 					"patching_rect" : [ 10.0, 7.0, 30.0, 30.0 ]
 				}
 
@@ -332,7 +332,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 360.999999999999659, 109.0, 109.0, 22.0 ],
+					"patching_rect" : [ 444.5, 109.0, 109.0, 22.0 ],
 					"text" : "prepend deleterule"
 				}
 
@@ -344,7 +344,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 711.999999999999091, 109.0, 35.0, 22.0 ],
+					"patching_rect" : [ 770.375, 109.0, 35.0, 22.0 ],
 					"text" : "rules"
 				}
 
@@ -356,7 +356,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 243.999999999999773, 109.0, 76.0, 22.0 ],
+					"patching_rect" : [ 335.875, 109.0, 76.0, 22.0 ],
 					"text" : "prepend rule"
 				}
 
@@ -368,7 +368,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 126.999999999999858, 109.0, 54.0, 22.0 ],
+					"patching_rect" : [ 227.25, 109.0, 54.0, 22.0 ],
 					"text" : "advance"
 				}
 
@@ -389,11 +389,11 @@
 				"box" : 				{
 					"id" : "obj-4",
 					"maxclass" : "newobj",
-					"numinlets" : 8,
-					"numoutlets" : 8,
-					"outlettype" : [ "", "", "", "", "", "", "", "" ],
-					"patching_rect" : [ 10.0, 64.0, 837.999999999998977, 22.0 ],
-					"text" : "route l-string advance rule deleterule int currentstring rules"
+					"numinlets" : 9,
+					"numoutlets" : 9,
+					"outlettype" : [ "", "", "", "", "", "", "", "", "" ],
+					"patching_rect" : [ 10.0, 64.0, 888.0, 22.0 ],
+					"text" : "route l-string axiom advance rule deleterule int currentstring rules"
 				}
 
 			}
@@ -401,7 +401,7 @@
 				"box" : 				{
 					"comment" : "Current step event symbol",
 					"id" : "obj-53",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -413,7 +413,7 @@
 				"box" : 				{
 					"comment" : "Current step metadata",
 					"id" : "obj-51",
-					"index" : 0,
+					"index" : 2,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -511,7 +511,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-8", 0 ],
-					"midpoints" : [ 524.999999999999432, 418.0, 128.5, 418.0 ],
+					"midpoints" : [ 600.125, 418.0, 128.5, 418.0 ],
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -526,7 +526,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-56", 0 ],
-					"midpoints" : [ 487.499999999999432, 373.5, 128.5, 373.5 ],
+					"midpoints" : [ 562.625, 373.5, 128.5, 373.5 ],
 					"source" : [ "obj-11", 0 ]
 				}
 
@@ -620,7 +620,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"midpoints" : [ 136.499999999999858, 141.25, 19.5, 141.25 ],
+					"midpoints" : [ 236.75, 141.25, 19.5, 141.25 ],
 					"source" : [ "obj-37", 0 ]
 				}
 
@@ -628,7 +628,14 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-11", 0 ],
-					"source" : [ "obj-4", 4 ]
+					"source" : [ "obj-4", 5 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-23", 0 ],
+					"source" : [ "obj-4", 1 ]
 				}
 
 			}
@@ -642,42 +649,42 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-37", 0 ],
-					"source" : [ "obj-4", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-40", 0 ],
 					"source" : [ "obj-4", 2 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-41", 0 ],
-					"source" : [ "obj-4", 6 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-44", 0 ],
+					"destination" : [ "obj-40", 0 ],
 					"source" : [ "obj-4", 3 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-41", 0 ],
+					"source" : [ "obj-4", 7 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-44", 0 ],
+					"source" : [ "obj-4", 4 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-48", 0 ],
-					"source" : [ "obj-4", 5 ]
+					"source" : [ "obj-4", 6 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"midpoints" : [ 253.499999999999773, 141.25, 19.5, 141.25 ],
+					"midpoints" : [ 345.375, 141.25, 19.5, 141.25 ],
 					"source" : [ "obj-40", 0 ]
 				}
 
@@ -685,7 +692,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"midpoints" : [ 721.499999999999091, 141.0, 19.5, 141.0 ],
+					"midpoints" : [ 779.875, 141.0, 19.5, 141.0 ],
 					"source" : [ "obj-41", 0 ]
 				}
 
@@ -693,7 +700,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"midpoints" : [ 370.499999999999659, 141.25, 19.5, 141.25 ],
+					"midpoints" : [ 454.0, 141.25, 19.5, 141.25 ],
 					"source" : [ "obj-44", 0 ]
 				}
 
@@ -764,7 +771,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-48", 1 ],
-					"midpoints" : [ 19.5, 231.75, 623.499999999999318, 231.75 ],
+					"midpoints" : [ 19.5, 231.75, 690.25, 231.75 ],
 					"order" : 0,
 					"source" : [ "obj-6", 0 ]
 				}
@@ -835,51 +842,7 @@
 				}
 
 			}
- ],
-		"dependency_cache" : [ 			{
-				"name" : "lsq.translator.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "binary2integer.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "lsq.interpreter.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "rules.coll",
-				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "string-validation.js",
-				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/javascript",
-				"patcherrelativepath" : "../javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "integer2binary.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/patchers",
-				"patcherrelativepath" : ".",
-				"type" : "JSON",
-				"implicit" : 1
-			}
- ],
-		"autosave" : 0
+ ]
 	}
 
 }

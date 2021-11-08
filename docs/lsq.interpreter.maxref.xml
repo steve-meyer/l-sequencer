@@ -14,7 +14,7 @@
 
 	<methodlist>
 
-		<method name="l-string">
+		<method name="axiom">
 			<arglist>
 				<arg name="initial-string" optional="0" type="list"/>
 			</arglist>
@@ -22,6 +22,14 @@
 			<description>
 				An L-system string should be a list of single characters that will start a series of L-system evolutions. This axiom string will immediately be passed through the L-system rule set and advance to first iteration.
 			</description>
+		</method>
+
+		<method name="l-string">
+			<arglist>
+				<arg name="initial-string" optional="0" type="list"/>
+			</arglist>
+			<digest>Alias for axiom.</digest>
+			<description>Alias for axiom.</description>
 		</method>
 
 		<method name="get">
