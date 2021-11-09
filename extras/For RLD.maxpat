@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 11,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -501,8 +501,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 201.0, 226.0, 78.0, 22.0 ],
-					"text" : "l-string F X Y"
+					"patching_rect" : [ 201.0, 226.0, 74.0, 22.0 ],
+					"text" : "axiom F X Y"
 				}
 
 			}
@@ -899,6 +899,13 @@
 				"name" : "rules.coll",
 				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/patchers",
 				"patcherrelativepath" : "../patchers",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "string-validation.js",
+				"bootpath" : "~/Documents/Max 8/Packages/l-sequencer/javascript",
+				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
