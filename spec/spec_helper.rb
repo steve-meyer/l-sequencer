@@ -16,13 +16,14 @@ end
 
 # The "server" is an OSC listener that will catch messages sent from Max in response to
 # sending OSC messages that will trigger functionality to be tested.
-def start_server
-  @server  = OSC::Server.new(7401)
+def start_server(test_port)
+  @server  = OSC::Server.new(test_port)
   @srv_thr = Thread.new { @server.run }
 end
 
 
 def stop_server
+  send_message(controller_client, "/clearconsole")
   @srv_thr.exit
 end
 
@@ -30,11 +31,16 @@ end
 # The outN variables here simply represent the output received from Max abstraction outlets.
 # See for example how the outlets are wired up to [udpsend] objects in the file
 # lsq.interpreter_mock.maxpat
-def clear_outputs
-  @out1 = nil
+def clear_outputs(first_outlet = :single_valued)
+  @out1 = first_outlet == :multi_valued ? Array.new : nil
   @out2 = Array.new
-  @server.add_method("/out1") {|message| @out1  = message.to_a}
-  @server.add_method("/out2") {|message| @out2 << message.to_a}
+  server.add_method("/out1") do |message|
+    case first_outlet
+    when :multi_valued then @out1 << message.to_a
+    else                    @out1  = message.to_a
+    end
+  end
+  server.add_method("/out2") {|message| @out2 << message.to_a}
 end
 
 

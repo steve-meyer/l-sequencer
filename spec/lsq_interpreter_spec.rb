@@ -2,8 +2,8 @@ require "spec_helper"
 
 
 RSpec.describe "L-Sequencer Interpreter" do
-  before(:all)  { start_server  }
-  after(:all)   { stop_server   }
+  before(:all)  { start_server(7401) }
+  after(:all)   { stop_server }
   before(:each) { clear_outputs }
 
   context "when loading the default [lsq.interpreter]" do
