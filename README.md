@@ -26,7 +26,7 @@ There are three types of symbols available.
 
 ## Testing
 
-This Max Package is tested using the Ruby RSpec framework. See the `spec` directory for the test suite, which is kinda funny, right? Here's how it works...
+This Max Package is tested using the Ruby RSpec framework. See the `spec` directory for the test suite. Here's how it works...
 
 ### Ruby Dependencies
 
