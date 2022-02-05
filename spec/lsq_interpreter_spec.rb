@@ -2,26 +2,18 @@ require "spec_helper"
 
 
 RSpec.describe "L-Sequencer Interpreter" do
+  before(:all)  { start_server  }
+  after(:all)   { stop_server   }
+  before(:each) { clear_outputs }
+
   context "when loading the default [lsq.interpreter]" do
     before(:all) do
-      @patcher_path = File.join(mock_dir, "lsq.interpreter_mock.maxpat")
-      @patcher_sym  = (0...8).map { (65 + rand(26)).chr }.join
-      send_message(controller_client, ["/openfile", @patcher_sym, @patcher_path])
-
-      @server  = OSC::Server.new(7401)
-      @srv_thr = Thread.new { @server.run }
+      @patcher_sym  = random_symbol
+      open_mock("lsq.interpreter", @patcher_sym)
     end
 
     after(:all) do
-      send_message(controller_client, ["/closefile", @patcher_sym])
-      @srv_thr.exit
-    end
-
-    before(:each) do
-      @out1 = nil
-      @out2 = Array.new
-      @server.add_method("/out1") {|message| @out1  = message.to_a}
-      @server.add_method("/out2") {|message| @out2 << message.to_a}
+      close_mock(@patcher_sym)
     end
 
     it "has a default set of rules" do
@@ -107,6 +99,49 @@ RSpec.describe "L-Sequencer Interpreter" do
       it "can keep advancing" do
         send_message(client, "advance")
         expect(@out1).to eq(["B", "C"])
+      end
+    end
+  end
+
+
+  context "an l-system with single character (non-list) production rules" do
+    before(:all) do
+      @patcher_sym  = random_symbol
+      open_mock("lsq.interpreter", @patcher_sym)
+
+      send_message(client, "rule F X")
+      send_message(client, "rule X Y")
+      send_message(client, "rule Y F")
+      send_message(client, "axiom F")
+    end
+
+    after(:all) do
+      close_mock(@patcher_sym)
+    end
+
+    it "should not include the 'symbol' in the output" do
+      send_message(client, "get")
+      expect(@out1).not_to include("symbol")
+    end
+
+    it "should have a string processed by the production rules" do
+      send_message(client, "get")
+      expect(@out1).to eq(["X"])
+    end
+
+    context "after advancing" do
+      before(:all) do
+        send_message(client, "advance")
+      end
+
+      it "should not include the 'symbol' in the output" do
+        send_message(client, "get")
+        expect(@out1).not_to include("symbol")
+      end
+
+      it "should have an l-string for the next iteration" do
+        send_message(client, "get")
+        expect(@out1).to eq(["Y"])
       end
     end
   end
